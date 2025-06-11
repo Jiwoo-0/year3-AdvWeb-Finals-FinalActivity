@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pirate Crew</title>
+</head>
+<body>
+    <h1>Pirate Crew</h1>
+    <p>INF225_FULLCRUD_ACT_ROPETA_AARONJIRO_9iyuJhJHHnmKl225</p>
+    <hr/>
+
+    <div border="1">
+        <h1>Register</h1>
+        <form action="/register/process" method="POST">
+            <div>
+                <label>First Name:</label>
+                <input type="text" name="user_firstname"/>
+            </div>
+            <div>
+                <label>Last Name:</label>
+                <input type="text" name="user_lastname"/>
+            </div>
+            <div>
+                <label>Email:</label>
+                <input type="email" name="user_email"/>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="user_password"/>
+            </div>
+            <div>
+                <label>Confirm Password:</label>
+                <input type="password" name="repw"/>
+            </div>
+            <div>
+                <input type="submit" value="Register"/>
+            </div>
+            <div>
+                <h3 style="color: red;">{{error}}</h3>
+            </div>
+        </form>
+    </div>
+
+    <div border="1">
+        <h1>Login</h1>
+        <form action="/login/process" method="POST">
+            <div>
+                <label>Email:</label>
+                <input type="email" name="user_email"/>
+            </div>
+            <div>
+                <label>Password:</label>
+                <input type="password" name="user_password"/>
+            </div>
+            <div>
+                <input type="submit" value="login"/>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

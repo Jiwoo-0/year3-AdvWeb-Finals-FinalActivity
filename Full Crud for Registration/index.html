@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME PAGE</title>
+</head>
+<body>
+    <h1>REGISTER CUSTOMER</h1>
+    <p>INF225_FSTACK_ROPETA_AARONJIRO_72JhJuRt3Yt4MpbvX225</p>
+    <hr>
+    <form method="POST" action="/process/new">
+    <div>
+        <label>FIRST NAME:</label>
+        <input type="text" name="customer_firstname">
+    </div>
+    <div>
+        <label>LAST NAME:</label>
+        <input type="text" name="customer_lastname">
+    </div>
+    <div>
+        <label>EMAIL:</label>
+        <input type="email" name="customer_email">
+    </div>
+    <div>
+        <label>AGE:</label>
+        <input type="number" name="customer_age">
+    </div>
+    <div>
+        <input type="submit" value="REGISTER">
+    </div>
+    </form>
+    <h3 style="color: red;">{{error}}</h3>
+    <h1>LIST OF CUSTOMERS</h1>
+    <hr>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Customer Lname</td>
+            <td>Customer Fname</td>
+            <td>Customer Age</td>
+            <td>Customer Email</td>
+            <td>Actions</td>
+        </tr>
+        {% for customer in currentList: %}
+            <tr>
+                <td>{{customer['id']}}</td>
+                <td>{{customer['customer_lastname']}}</td>
+                <td>{{customer['customer_firstname']}}</td>
+                <td>{{customer['customer_age']}}</td>
+                <td>{{customer['customer_email']}}</td>
+                <td><a href="/update">EDIT</a> || <a onclick="return confirm('Are you sure yo want to delete?')" href="/delete/{{customer['id']}}">DELETE</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <h1>LIST OF PURCHASES</h1>
+    <hr>
+    <table border="1">
+        <tr>
+            <td>ID</td>
+            <td>Customer Fullname</td>
+            <td>Customer Email</td>
+            <td>Purchased Product</td>
+            <td>Quantity</td>
+        </tr>
+       
+    </table>
+</body>
+</html>
