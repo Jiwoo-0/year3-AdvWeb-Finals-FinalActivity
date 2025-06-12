@@ -64,7 +64,7 @@ def dashboard():
     return render_template("dashboard.html")
 
 @app.route("/pirate/new")
-def dashboard():
+def AddPirate():
     if 'user_id' not in session:
         return redirect(url_for("index"))
     
