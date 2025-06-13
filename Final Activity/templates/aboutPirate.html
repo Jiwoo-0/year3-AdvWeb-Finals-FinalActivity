@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deep Sea Davy</title>
+</head>
+<body>
+    <h1>Deep Sea Davy</h1>
+    <p>INF225_FULLCRUD_ACT_ROPETA_AARONJIRO_9iyuJhJHHnmKl225</p>
+    <a href="/pirates">Crew Board</a>
+    <hr/>
+    <div>
+        <img src="{{ pirate.pirate_img }}" style="width: 150px; height: 150px;">
+        <h3>{{pirate.pirate_name}}</h3>
+        <h2>{{pirate.pirate_phrase}}</h2>
+    </div>
+    <div>
+        <h3>About</h3>
+        <p>Crew Position: {{pirate.pirate_position}}</p>
+        <p>Treasures: {{pirate.pirate_chest}}</p>
+        <div>
+            <p>Peg Leg: {{'Yes' if pirate.pirate_hasPegleg else 'No'}}</p>
+            <a href="/pirate/update/leg/{{pirate.id}}">{{'No' if pirate.pirate_hasPegleg else 'Yes'}}</a>
+            <hr/>
+            <p>Eye Patch: {{'Yes' if pirate.pirate_hasEyepatch else 'No' }}</p>
+            <a href="/pirate/update/eye/{{pirate.id}}">{{'No' if pirate.pirate_hasEyepatch else 'Yes'}}</a>
+            <hr/>
+            <p>Hook Hand: {{'Yes' if pirate.pirate_hasHackhand else 'No' }}</p>
+            <a href="/pirate/update/hand/{{pirate.id}}">{{'No' if pirate.pirate_hasHackhand else 'Yes'}}</a>
+            <hr/>
+        </div>
+    </div>
+</body>
+</html>

@@ -9,8 +9,18 @@
     <h1>Pirate Crew</h1>
     <p>INF225_FULLCRUD_ACT_ROPETA_AARONJIRO_9iyuJhJHHnmKl225</p>
     <a href="/logout">Log out</a>
-    <hr/>
     <a href="/pirate/new">Add Pirate</a>
+    <hr/>
+    <h2>Pirate Crew</h2>
+    {% for pirate in pirates %}
+        <div>
+            <img src="{{ pirate.pirate_img }}" style="width: 50px; height: 50px;">
+            <h3>{{ pirate.pirate_name }}</h3>
+            <a href="/pirate/{{ pirate.id }}">View Pirate</a>
+            <a href="/pirate/delete/{{ pirate.id }}">Walk the Plank</a>
+        </div>
+        <hr/>
+    {% endfor %}
     
 </body>
 </html>

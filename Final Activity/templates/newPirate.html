@@ -11,14 +11,15 @@
     <a href="/pirates">Crew Board</a>
     <hr/>
 
-    <form action="" method="post">
+    <form action="/pirate/create" method="post">
+        <input type="hidden" name="pirate_user_id" value="{{logged_user}}"/>
         <div>
             <label>Pirate Name:</label>
             <input type="text" name="pirate_name"/>
         </div>
         <div>
             <label>Image URL:</label>
-            <input type="text" name="pirate_name"/>
+            <input type="text" name="pirate_img"/>
         </div>
         <div>
             <label>Number of Treasure Chests:</label>
@@ -41,7 +42,25 @@
                 <option value="Powder Monkey">Powder Monkey</option>
             </select>
         </div>
+        <div>
+            <label>Peg Leg:</label>
+            <input type="checkbox" name="pirate_hasPegleg" value="1"/>
+        </div>
+        <div>
+            <label>Eye Patch:</label>
+            <input type="checkbox" name="pirate_hasEyepatch" value="1"/>
+        </div>
+        <div>
+            <label>Hook Hand:</label>
+            <input type="checkbox" name="pirate_hasHackhand" value="1"/>
+        </div>
+        <div>
+            <input type="submit" value="Add Pirate"/>
+        </div>
     </form>
+    <div>
+        <h3 style="color: red;">{{error}}</h3>
+    </div>
     
     
 </body>

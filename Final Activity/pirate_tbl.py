@@ -11,6 +11,7 @@ class Pirates:
         self.pirate_hasPegleg=data['pirate_hasPegleg']
         self.pirate_hasEyepatch=data['pirate_hasEyepatch']
         self.pirate_hasHackhand=data['pirate_hasHackhand']
+        self.pirate_user_id=data['pirate_user_id']
         self.date_created=data['date_created']
         self.date_updated=data['date_updated']
         
@@ -26,13 +27,13 @@ class Pirates:
 
     @classmethod
     def new_pirate(cls,data):
-        query="INSERT INTO pirate_tbl (pirate_name,pirate_img,pirate_chest,pirate_phrase,pirate_position,pirate_hasPegleg,pirate_hasEyepatch,pirate_hasHackhand) VALUES(%(pirate_name)s,%(pirate_img)s,%(pirate_chest)s,%(pirate_phrase)s,%(pirate_position)s,%(pirate_hasPegleg)s,%(pirate_hasEyepatch)s,%(pirate_hasHackhand)s)"
+        query="INSERT INTO pirate_tbl (pirate_name,pirate_img,pirate_chest,pirate_phrase,pirate_position,pirate_hasPegleg,pirate_hasEyepatch,pirate_hasHackhand,pirate_user_id) VALUES(%(pirate_name)s,%(pirate_img)s,%(pirate_chest)s,%(pirate_phrase)s,%(pirate_position)s,%(pirate_hasPegleg)s,%(pirate_hasEyepatch)s,%(pirate_hasHackhand)s, %(pirate_user_id)s)"
         results=connecttoMysql("piratecrew").query_db(query,data)
         return results
     
     @classmethod
     def update_pirate(cls,data):
-        query="UPDATE pirate_tbl SET pirate_name=%(pirate_name)s,pirate_img=%(pirate_img)s,pirate_chest=%(pirate_chest)s,pirate_phrase=%(pirate_phrase)s,pirate_position=%(pirate_position)s,pirate_hasPegleg=%(pirate_hasPegleg)s,pirate_hasEyepatch=%(pirate_hasEyepatch)s,pirate_hasHackhand=%(pirate_hasHackhand)s WHERE id=%(id)s"
+        query="UPDATE pirate_tbl SET pirate_name=%(pirate_name)s,pirate_img=%(pirate_img)s,pirate_chest=%(pirate_chest)s,pirate_phrase=%(pirate_phrase)s,pirate_position=%(pirate_position)s,pirate_hasPegleg=%(pirate_hasPegleg)s,pirate_hasEyepatch=%(pirate_hasEyepatch)s,pirate_hasHackhand=%(pirate_hasHackhand)s,pirate_user_id=%(pirate_user_id)s WHERE id=%(id)s"
         results=connecttoMysql("piratecrew").query_db(query,data)
         # if len(results)<1:
         #     return False
@@ -45,6 +46,15 @@ class Pirates:
         # if len(result)<1:
         #     return False
         return cls(result[0])
+    
+    @classmethod
+    def getAllByUser(cls,data):
+        query="SELECT * FROM pirate_tbl WHERE pirate_user_id=%(pirate_user_id)s;"
+        results=connecttoMysql("piratecrew").query_db(query,data)
+        pirates=[]
+        for pirate in results:
+            pirates.append(cls(pirate))
+        return pirates
     
     @classmethod
     def delete_pirate(cls,data):
